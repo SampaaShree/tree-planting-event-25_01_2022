@@ -1,0 +1,25 @@
+a {
+    font-size: 2rem;
+    line-height: 1;
+    font-family: freight-sans-condensed-pro, helveticaneue-condensed, arial narrow, sans-serif;
+    text-shadow: 3px 3px 4px #04aa6d !important;
+}
+
+.nav-link.active {
+    transition: transform .2s;
+}
+
+.nav-link.active:hover {
+    -ms-transform: scale(1.1);
+    /* IE 9 */
+    -webkit-transform: scale(1.1);
+    /* Safari 3-8 */
+    transform: scale(1.1);
+}
+
+
+/* Responsive Styles - To be Done*/
+
+@media screen and (max-width: 767px) {}
+
+@media screen and (max-width: 575px) {}

@@ -1,0 +1,74 @@
+<h1 class="text-success text-center">
+    The Coimbatore Tree Club
+</h1>
+
+<h2 class="text-center">Tree Planting Event Volunteer Form</h2>
+
+<div class="container">
+    <form novalidate [formGroup]="volunteerForm">
+        <div class="form-group">
+            <label for="name">Name </label><span class="text-danger ml-1">*</span>
+            <input formControlName="name" id="name" placeholder="Please enter the Name" type="text" class="form-control" />
+            <div *ngIf="isSubmitted && f.name.errors" class="text-danger">
+                <div *ngIf="f.name.errors.required">
+                    Name is required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Id </label><span class="text-danger ml-1">*</span>
+            <input formControlName="email" id="email" placeholder="Please enter the Email Address" type="text" class="form-control" />
+            <div *ngIf="isSubmitted && f.email.errors" class="text-danger">
+                <div *ngIf="f.email.errors.required">
+                    Email Id is required
+                </div>
+                <div *ngIf="f.email.errors.email">
+                    Enter valid email format
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="number">Mobile Number </label><span class="text-danger ml-1">*</span>
+            <input formControlName="number" id="number" placeholder="Please enter the Mobile Number" type="number" class="form-control" />
+            <div *ngIf="isSubmitted && f.number.errors">
+                <div *ngIf="f.number.errors.required" class="text-danger">
+                    Mobile Number is required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Gender </label>
+            <div><span *ngFor="let genderType of genderTypes; let i=index">
+                    <input type="radio" id="genderType_{{i}}"
+                        [value]="genderType.value"
+                        formControlName="gender" class="ml-3" />
+                    <label for="genderType_{{i}}" class="ml-1">{{genderType.label}}</label>
+                </span></div>
+        </div>
+
+        <div class="form-group">
+            <label>How do you want us to notify you for the event? </label><span class="text-danger ml-1">*</span>
+            <div><span *ngFor="let notificationType of notificationTypes; let i=index">
+                    <input type="checkbox" id="notificationType{{i}}"
+                        (change)="onNotificationTypeChange($event?.currentTarget?.checked,notificationType)"
+                        [checked]="selectedNotificationTypes?.indexOf(notificationType.value)>-1" class="ml-3"/>
+                    <label for="notificationType{{i}}" class="ml-1">{{notificationType.label}}</label>
+                </span></div>
+            <div *ngIf="isSubmitted && selectedNotificationTypes?.length==0" class="text-danger">
+                Notification Type is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Comments </label>
+            <textarea formControlName="comments" id="comments" placeholder="Please provide your comments" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn bg-success" (click)="onSubmit()">
+            Submit
+        </button>
+    </form>
+</div>

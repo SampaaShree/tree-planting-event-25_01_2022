@@ -1,0 +1,17 @@
+.contactDetails {
+    box-shadow: 3px 4px 8px 0 black;
+    text-shadow: 3px 3px 4px black !important;
+    padding: 16px;
+    text-align: center;
+    color: #ffd200;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: transform .2s;
+}
+
+.contactDetails:hover {
+    -ms-transform: scale(1.1);
+    /* IE 9 */
+    -webkit-transform: scale(1.1);
+    /* Safari 3-8 */
+    transform: scale(1.1);
+}
